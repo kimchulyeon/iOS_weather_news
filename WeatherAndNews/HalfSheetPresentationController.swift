@@ -39,12 +39,12 @@ class HalfSheetPresentationController: UIPresentationController {
 		case .changed:
 			presentedView.frame.origin.y = containerView!.bounds.height - deviceHalfHeight + yTranslation
 		case .ended:
-			UIView.animate(withDuration: 0.2) {
+			UIView.animate(withDuration: 0.3) {
 				presentedView.frame.origin.y = 40
 				presentedView.frame.size.height = self.containerView!.bounds.height
 			}
 			if isDraggingDown {
-				UIView.animate(withDuration: 0.2) {
+				UIView.animate(withDuration: 0.3) {
 					presentedView.frame.origin.y = self.deviceHalfHeight
 				}
 			}
