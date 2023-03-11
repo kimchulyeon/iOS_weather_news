@@ -10,11 +10,12 @@ import Foundation
 struct WeatherInfo: Codable {
 	let weather: [Weather]
 	let temp: Temp
-	let rain: Rain
+	let rain: Rain?
 	
 	enum CodingKeys: String, CodingKey {
-		case weather, rain
+		case weather
 		case temp = "main"
+		case rain
 	}
 }
 
@@ -23,7 +24,7 @@ struct Weather: Codable {
 }
 
 struct Temp: Codable {
-	let temp: String
+	let temp: Double
 }
 
 struct Rain: Codable {

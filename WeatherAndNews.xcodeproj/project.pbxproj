@@ -296,6 +296,7 @@
 /* Begin XCBuildConfiguration section */
 		6E61FC5D29A2FCE600D24CCC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FF1A2095FB384F16A90F51D /* Pods-WeatherAndNews.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -356,6 +357,7 @@
 		};
 		6E61FC5E29A2FCE600D24CCC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03AE0AD16680CC64A41DB824 /* Pods-WeatherAndNews.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

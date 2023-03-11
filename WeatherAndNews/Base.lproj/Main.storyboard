@@ -18,11 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLz-m9-2NB">
-                                <rect key="frame" x="112.5" y="25" width="150" height="34.5"/>
+                                <rect key="frame" x="135.5" y="25" width="104" height="34.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="JT0-hd-Cqn"/>
-                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="map" catalog="system" title="Seoul" imagePadding="10"/>
                                 <userDefinedRuntimeAttributes>
@@ -186,12 +183,16 @@
                             <constraint firstItem="yLz-m9-2NB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YIL-WI-2Ng"/>
                             <constraint firstItem="yLz-m9-2NB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="alI-3T-EYC"/>
                             <constraint firstItem="WMz-yP-pYg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bbb-ws-x7E"/>
+                            <constraint firstItem="yLz-m9-2NB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="epA-Vm-ufB"/>
                             <constraint firstItem="WMz-yP-pYg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="knx-ya-gcR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yLz-m9-2NB" secondAttribute="trailing" constant="50" id="sNb-Tr-Mm7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WMz-yP-pYg" secondAttribute="bottom" priority="999" constant="200" id="zzD-Th-r2u"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cityNameButton" destination="yLz-m9-2NB" id="cDo-yM-ol7"/>
+                        <outlet property="rainLabel" destination="0Pl-bD-NoG" id="WsQ-pm-n6S"/>
+                        <outlet property="tempLabel" destination="3Or-42-crc" id="LVm-NL-EL2"/>
                         <outlet property="weatherInfoViewBottomConstraint" destination="zzD-Th-r2u" id="zIY-7W-Ver"/>
                     </connections>
                 </viewController>
