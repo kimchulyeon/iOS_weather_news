@@ -24,8 +24,8 @@ class WeatherAndNewsVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// 날씨 정보 stack view bottom constraint 기기 높이 반값 + 10으로 설정
-		weatherInfoViewBottomConstraint.constant = deviceHalfHeight + 10
+		// 날씨 정보 stack view bottom constraint 기기 높이 반값
+		weatherInfoViewBottomConstraint.constant = deviceHalfHeight + 20
 		handleTapCityStackView()
 	}
 

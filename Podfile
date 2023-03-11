@@ -7,4 +7,5 @@ target 'WeatherAndNews' do
 
   # Pods for WeatherAndNews
   	pod 'PanModal'
+	pod 'Alamofire'
 end
