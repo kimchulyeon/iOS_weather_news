@@ -14,7 +14,7 @@ class NewsListVC: UIViewController {
 			newsTableView.separatorStyle = .none
 		}
 	}
-
+	
 	//MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,7 +32,7 @@ class NewsListVC: UIViewController {
 	}
 
 	//MARK: - func ============================================
-	/// view의 왼쪽 상단, 오른쪽 상단 cornerRadius 설정
+/// view의 왼쪽 상단, 오른쪽 상단 cornerRadius 설정
 	private func configureCornerRadius() {
 		let maskPath = UIBezierPath(roundedRect: self.view.bounds,
 		                            byRoundingCorners: [.topLeft, .topRight],

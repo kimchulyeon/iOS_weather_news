@@ -6,40 +6,37 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
 class WeatherAndNewsVC: UIViewController {
-
-	//MARK: - properties ============================================
 	let deviceHalfHeight = UIScreen.main.bounds.height / 2.0
 
-	@IBOutlet weak var CityNameStackView: UIStackView! {
+
+	@IBOutlet weak var weatherInfoViewBottomConstraint: NSLayoutConstraint!
+
+	@IBOutlet weak var cityNameButton: UIButton! {
 		didSet {
-			CityNameStackView.layoutMargins = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
-			CityNameStackView.isLayoutMarginsRelativeArrangement = true
+			cityNameButton.setTitle(selectedCityName, for: .normal)
 		}
 	}
-	@IBOutlet weak var weatherInfoViewBottomConstraint: NSLayoutConstraint!
+	var selectedCityName = "서울"
+	var cities = CityList.allCases
+
 
 	//MARK: - lifecycle ============================================
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// 날씨 정보 stack view bottom constraint 기기 높이 반값
-		weatherInfoViewBottomConstraint.constant = deviceHalfHeight + 20
-		handleTapCityStackView()
+		self.weatherInfoViewBottomConstraint.constant = deviceHalfHeight + 20
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
 		setNewsListVC()
 	}
 
-	//MARK: - func ============================================
 	// 도시 View 탭 이벤트 추가
-	func handleTapCityStackView() {
-		let tap = UITapGestureRecognizer(target: self, action: #selector(tapCityStackView))
 
-		CityNameStackView.addGestureRecognizer(tap)
-	}
 	// NewsListVC present
 	func setNewsListVC() {
 		let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsListVC")
@@ -55,8 +52,8 @@ class WeatherAndNewsVC: UIViewController {
 				sheet.prefersGrabberVisible = true // grabber 막대기 표시
 			}
 			self.present(newsVC, animated: true)
-		
-		// iOS 15 미만일 경우
+
+			// iOS 15 미만일 경우
 		} else {
 			let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsListVC")
 			newsVC.modalPresentationStyle = .custom
@@ -66,12 +63,19 @@ class WeatherAndNewsVC: UIViewController {
 
 	}
 
-	//MARK: - selector ============================================
-	/// 상단 도시 위치 나타내는 View 탭 시 셀렉터
-	@objc func tapCityStackView() {
-		print("tapped city name box")
-	}
 
+	@IBAction func tapCityName(_ sender: UIButton) {
+		ActionSheetMultipleStringPicker.show(withTitle: "도시 선택", rows: [
+			self.cities.map({ $0.rawValue })
+		], initialSelection: [0], doneBlock: {
+			_, _, value in
+
+			return
+		}, cancel: { ActionMultipleStringCancelBlock in return }, origin: sender)
+	}
+	func handleCitySelect(_ selectedCity: String) {
+		print(selectedCity)
+	}
 }
 
 
@@ -79,5 +83,26 @@ class WeatherAndNewsVC: UIViewController {
 extension WeatherAndNewsVC: UIViewControllerTransitioningDelegate {
 	func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
 		return HalfSheetPresentationController(presentedViewController: presented, presenting: presenting)
+	}
+}
+
+//MARK: - UIPickerViewDataSource
+extension WeatherAndNewsVC: UIPickerViewDataSource {
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return self.cities.count
+	}
+}
+
+//MARK: - UIPickerViewDelegate
+extension WeatherAndNewsVC: UIPickerViewDelegate {
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		return self.cities[row].rawValue
+	}
+	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		print(self.cities[row].rawValue)
 	}
 }

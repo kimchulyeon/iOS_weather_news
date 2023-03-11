@@ -1,20 +1,24 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.7.1)
   - Alamofire (5.6.4)
   - PanModal (1.2.7)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - Alamofire
   - PanModal
 
 SPEC REPOS:
   trunk:
+    - ActionSheetPicker-3.0
     - Alamofire
     - PanModal
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
 
-PODFILE CHECKSUM: d91903c7be29f4d6ef11a51451bebe81ba649dcf
+PODFILE CHECKSUM: a04845b8048b397941497aa67653c20ac415bebb
 
 COCOAPODS: 1.11.3

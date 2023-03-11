@@ -8,4 +8,5 @@ target 'WeatherAndNews' do
   # Pods for WeatherAndNews
   	pod 'PanModal'
 	pod 'Alamofire'
+	pod 'ActionSheetPicker-3.0'
 end
