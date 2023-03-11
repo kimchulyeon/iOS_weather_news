@@ -20,7 +20,7 @@ class NewsListVC: UIViewController {
 		super.viewDidLoad()
 		newsTableView.delegate = self
 		newsTableView.dataSource = self
-
+		
 		/*
 		 ✅ viewcontroller는 UIStoryboard.instantiateViewController(identifier:)
 		 ✅ view는 UINib(nibName:)
