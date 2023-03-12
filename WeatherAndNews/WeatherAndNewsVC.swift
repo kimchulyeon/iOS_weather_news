@@ -135,23 +135,3 @@ class WeatherAndNewsVC: UIViewController {
 }
 
 
-//MARK: - UIPickerViewDataSource
-extension WeatherAndNewsVC: UIPickerViewDataSource {
-	func numberOfComponents(in pickerView: UIPickerView) -> Int {
-		return 1
-	}
-
-	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return self.citiesEng.count
-	}
-}
-
-//MARK: - UIPickerViewDelegate
-extension WeatherAndNewsVC: UIPickerViewDelegate {
-	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		return self.citiesEng[row]
-	}
-	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		print(self.citiesEng[row])
-	}
-}
