@@ -4,81 +4,83 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="181" id="KGk-i7-Jjw" customClass="NewsTVC" customModule="WeatherAndNews" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="440" height="181"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="106" id="KGk-i7-Jjw" customClass="NewsTVC" customModule="WeatherAndNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="106"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="440" height="181"/>
+                <rect key="frame" x="0.0" y="0.0" width="390" height="106"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newspaper" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="n7t-X5-d3a">
-                        <rect key="frame" x="12" y="20.333333333333329" width="100" height="140.66666666666669"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="Ysc-o0-3hm"/>
-                        </constraints>
-                    </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ilS-Fr-juA">
-                        <rect key="frame" x="130" y="20" width="186.33333333333337" height="141"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-ht-TOJ">
+                        <rect key="frame" x="20" y="20" width="290" height="66"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="뉴스 종류?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Px-ry-fEK">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="14.666666666666666"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뉴스 제목입니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v32-cv-EcL">
-                                <rect key="frame" x="0.0" y="19.666666666666657" width="93.666666666666671" height="102"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="ㅁㄴㅇ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-Ey-SRh">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="uWk-hD-413">
-                                <rect key="frame" x="0.0" y="126.66666666666664" width="186.33333333333334" height="14.333333333333329"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cNi-OW-zDf">
+                                <rect key="frame" x="0.0" y="38" width="290" height="28"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2t4-VQ-0Kf">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="14.333333333333334"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iG-ho-xTb">
+                                        <rect key="frame" x="0.0" y="0.0" width="31" height="14.333333333333334"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abcdefg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2M-Cv-eJG">
-                                        <rect key="frame" x="140" y="0.0" width="46.333333333333343" height="14.333333333333334"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3S-fW-5wy">
+                                        <rect key="frame" x="0.0" y="19.333333333333329" width="31" height="8.6666666666666643"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-BT-gOT">
+                        <rect key="frame" x="330" y="33" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="9aJ-el-IDs"/>
+                            <constraint firstAttribute="height" constant="40" id="xGq-Vf-fnE"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal">
+                            <imageReference key="image" image="link.circle.fill" catalog="system" symbolScale="large"/>
+                        </state>
+                        <connections>
+                            <action selector="tapLinkButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3zM-Tq-Ggr"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ilS-Fr-juA" firstAttribute="bottom" secondItem="n7t-X5-d3a" secondAttribute="bottom" id="DL8-1s-2xL"/>
-                    <constraint firstItem="ilS-Fr-juA" firstAttribute="leading" secondItem="n7t-X5-d3a" secondAttribute="trailing" constant="18" id="GjN-oZ-Bbm"/>
-                    <constraint firstAttribute="bottom" secondItem="n7t-X5-d3a" secondAttribute="bottom" constant="20" id="tQm-0r-hGD"/>
-                    <constraint firstItem="ilS-Fr-juA" firstAttribute="top" secondItem="n7t-X5-d3a" secondAttribute="top" id="vK3-4d-iCj"/>
-                    <constraint firstItem="n7t-X5-d3a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="xg3-8S-Mld"/>
-                    <constraint firstItem="n7t-X5-d3a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="zSv-SB-Vrm"/>
+                    <constraint firstAttribute="bottom" secondItem="vvF-ht-TOJ" secondAttribute="bottom" constant="20" id="JHv-aT-nUw"/>
+                    <constraint firstItem="vvF-ht-TOJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Rsz-ON-pNo"/>
+                    <constraint firstItem="7KP-BT-gOT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uwo-Ga-PDE"/>
+                    <constraint firstAttribute="trailing" secondItem="7KP-BT-gOT" secondAttribute="trailing" constant="20" id="p2L-jx-mPa"/>
+                    <constraint firstItem="vvF-ht-TOJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="sbM-ZW-XUs"/>
+                    <constraint firstItem="7KP-BT-gOT" firstAttribute="leading" secondItem="vvF-ht-TOJ" secondAttribute="trailing" constant="20" id="z3Y-Gs-hSw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="firstSmallLabel" destination="2t4-VQ-0Kf" id="NQ2-Fa-8Ux"/>
-                <outlet property="newsImageView" destination="n7t-X5-d3a" id="tAb-HG-umH"/>
-                <outlet property="secondSmallLabel" destination="m2M-Cv-eJG" id="gaY-Lm-ydi"/>
-                <outlet property="subtitleLabel" destination="4Px-ry-fEK" id="1Ag-UJ-Vmh"/>
-                <outlet property="titleLabel" destination="v32-cv-EcL" id="KPA-5w-3HG"/>
+                <outlet property="authorLabel" destination="9iG-ho-xTb" id="PUa-W3-6lW"/>
+                <outlet property="dateLabel" destination="A3S-fW-5wy" id="UE1-0a-u7K"/>
+                <outlet property="linkImageButton" destination="7KP-BT-gOT" id="hlr-N1-c6X"/>
+                <outlet property="titleLabel" destination="YUG-Ey-SRh" id="tPM-E2-1iP"/>
             </connections>
-            <point key="canvasLocation" x="227.48091603053433" y="118.66197183098592"/>
+            <point key="canvasLocation" x="-7.6335877862595414" y="46.478873239436624"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="newspaper" catalog="system" width="128" height="111"/>
+        <image name="link.circle.fill" catalog="system" width="128" height="123"/>
     </resources>
 </document>
