@@ -70,9 +70,11 @@ class WeatherAndNewsVC: UIViewController {
 	}
 	/// 아래 draggable한 뉴스리스트 뷰 구성
 	func configureNewsView() {
+		print(#function)
 		guard let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsListVC") as? NewsListVC else { return }
 		newsVC.delegate = self
 		newsVC.newsList = self.newsList
+		
 		// false면 모달 사라지게 가능 | true면 항상 떠있게 하기
 		newsVC.isModalInPresentation = true
 
@@ -84,7 +86,6 @@ class WeatherAndNewsVC: UIViewController {
 			sheet.prefersGrabberVisible = true // grabber 막대기 표시
 		}
 		self.present(newsVC, animated: true)
-
 	}
 
 	/// 상단 도시 이름 버튼 탭
@@ -213,8 +214,16 @@ class WeatherAndNewsVC: UIViewController {
 				do {
 					guard let data = data else { return }
 					let newsData = try decoder.decode(News.self, from: data)
-					self.newsList = newsData.articles
-					self.configureNewsView()
+					if self.newsList == nil {
+						self.newsList = newsData.articles
+						self.configureNewsView()
+					} else {
+						print("이때다")
+						guard let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsListVC") as? NewsListVC else { return }
+						newsVC.delegate = self
+						newsVC.newsList = self.newsList
+						print("✅")
+					}
 				} catch {
 					print(error)
 				}

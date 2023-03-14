@@ -4,6 +4,7 @@
 //
 //  Created by chulyeon kim on 2023/02/27.
 // general sports entertainment technology health business
+// https://github.com/Juanpe/SkeletonView
 
 import UIKit
 
@@ -27,17 +28,20 @@ class NewsListVC: UIViewController {
 			newsTableView.separatorStyle = .singleLine
 		}
 	}
+	@IBOutlet weak var cateScrollView: UIScrollView!
 
 	weak var delegate: NewsListDelegate?
 	var testNum = 1
 	var newsList: [Article]?
 	var newsCategory: NewsCategory = .general
+	var apiCallMade = false
 
 	//MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		newsTableView.delegate = self
-		newsTableView.dataSource = self
+		self.newsTableView.delegate = self
+		self.newsTableView.dataSource = self
+		self.cateScrollView.delegate = self
 
 		/*
 		 ✅ viewcontroller는 UIStoryboard.instantiateViewController(identifier:)
@@ -88,7 +92,7 @@ class NewsListVC: UIViewController {
 		default:
 			break
 		}
-		
+
 		self.delegate?.tapCategory(value: self.newsCategory)
 	}
 }
@@ -124,13 +128,21 @@ extension NewsListVC: UITableViewDataSource {
 }
 
 //MARK: - UIScrollViewDelegate ==================
+// ❌ TODO ❌
 extension NewsListVC: UIScrollViewDelegate {
 	func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		let position = scrollView.contentOffset.y
-		if position == (self.newsTableView.contentSize.height - scrollView.frame.size.height) {
-			print("닿았다")
-			self.testNum += 1
-			print(self.testNum)
+		if scrollView != cateScrollView {
+			let height = scrollView.frame.size.height
+			let contentYOffset = scrollView.contentOffset.y
+			let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+
+			if distanceFromBottom < height && !apiCallMade {
+				print("You reached end of the table")
+				self.apiCallMade = true
+
+				// Make API call here
+				// ...
+			}
 		}
 	}
 }
