@@ -14,7 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
-		if let window = UIApplication.shared.windows.first {
+//		if let window = UIApplication.shared.windows.first {
+//			window.backgroundColor = .white
+//		}
+		if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+		   let window = windowScene.windows.first {
 			window.backgroundColor = .white
 		}
 		if #available(iOS 13.0, *) {

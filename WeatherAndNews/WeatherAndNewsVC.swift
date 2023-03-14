@@ -39,11 +39,8 @@ class WeatherAndNewsVC: UIViewController {
 		super.viewDidLoad()
 
 		if UserDefaults.standard.string(forKey: "selectedCity") == nil {
-			print("처음 실행")
 			self.configureView()
 			self.fetchWeather()
-		} else {
-			print("이제부턴 UserDefaults")
 		}
 	}
 
