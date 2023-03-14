@@ -38,8 +38,19 @@ class WeatherAndNewsVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.configureView()
-		self.fetchWeather()
+		if UserDefaults.standard.string(forKey: "selectedCity") == nil {
+			print("처음 실행")
+			self.configureView()
+			self.fetchWeather()
+		} else {
+			print("이제부턴 UserDefaults")
+		}
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		self.bringCityNameFromUserDefaults()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -47,11 +58,13 @@ class WeatherAndNewsVC: UIViewController {
 	}
 
 	//MARK: - 메소드
+	/// 상단 도시 버튼 텍스트 지정, 날씨 정보 뷰 bottom 패딩 값
 	func configureView() {
-		self.cityNameButton.setTitle(self.citiesKor[0], for: .normal)
+		guard let engNameIndex = self.citiesEng.firstIndex(of: self.selectedCityName) else { return }
+		self.cityNameButton.setTitle(self.citiesKor[engNameIndex], for: .normal)
 		self.weatherInfoViewBottomConstraint.constant = deviceHalfHeight + 20 // 날씨 정보 stack view bottom constraint 기기 높이 반값
 	}
-	// NewsListVC present
+	/// 아래 draggable한 뉴스리스트 뷰 구성
 	func configureNewsView() {
 		let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsListVC")
 		// false면 모달 사라지게 가능 | true면 항상 떠있게 하기
@@ -68,7 +81,7 @@ class WeatherAndNewsVC: UIViewController {
 
 	}
 
-	// 상단 도시 이름 버튼 탭
+	/// 상단 도시 이름 버튼 탭
 	@IBAction func tapCityName(_ sender: UIButton) {
 		let rows = CityList.allCases.map({ $0.rawValue })
 		ActionSheetMultipleStringPicker.show(withTitle: "도시 선택", rows: [rows], initialSelection: [0], doneBlock: { _, index, value in
@@ -78,11 +91,21 @@ class WeatherAndNewsVC: UIViewController {
 			}
 		}, cancel: { ActionMultipleStringCancelBlock in return }, origin: sender)
 	}
+	/// UserDefaults에 도시명이 저장되어있다면 가져와서 뷰를 구성하고 날씨 api 호출
+	private func bringCityNameFromUserDefaults() {
+		guard let cityName = UserDefaults.standard.string(forKey: "selectedCity") else { return }
+		self.selectedCityName = cityName
+		self.configureView()
+		self.fetchWeather()
+	}
+	/// 상단 도시 선택 시 UserDefaults 도시 저장하고 날씨 api 호출
 	private func handleCitySelect(_ selectedCity: String, selectedIndex: Int) {
 		self.cityNameButton.setTitle(self.citiesKor[selectedIndex], for: .normal)
 		self.selectedCityName = selectedCity
+		UserDefaults.standard.set(selectedCity, forKey: "selectedCity")
 		self.fetchWeather()
 	}
+	/// 날씨 api 호출
 	private func fetchWeather() {
 		UIView.animate(withDuration: 0.5, delay: 0) {
 			self.indicatorView.alpha = 1

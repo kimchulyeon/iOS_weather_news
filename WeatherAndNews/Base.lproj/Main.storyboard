@@ -62,16 +62,16 @@
                                                 <rect key="frame" x="140" y="0.0" width="135" height="135"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJ5-qI-Wsx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="65"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="41.5"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="temperature_icon" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-lj-sgN">
-                                                                <rect key="frame" x="5" y="0.5" width="40" height="64"/>
+                                                                <rect key="frame" x="5" y="-11" width="40" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="LxE-50-uNN"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="35℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Or-42-crc">
-                                                                <rect key="frame" x="93" y="22.5" width="42" height="20.5"/>
+                                                                <rect key="frame" x="93" y="10.5" width="42" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -87,16 +87,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3w-Bh-eff">
-                                                        <rect key="frame" x="0.0" y="70" width="135" height="65"/>
+                                                        <rect key="frame" x="0.0" y="46.5" width="135" height="42"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="raining" translatesAutoresizingMaskIntoConstraints="NO" id="6gn-DH-yTK">
-                                                                <rect key="frame" x="5" y="0.5" width="40" height="64"/>
+                                                                <rect key="frame" x="5" y="-11" width="40" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="Ffh-Sb-5CY"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pl-bD-NoG">
-                                                                <rect key="frame" x="92.5" y="22.5" width="37.5" height="20.5"/>
+                                                                <rect key="frame" x="92.5" y="11" width="37.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -109,6 +109,31 @@
                                                             <constraint firstItem="6gn-DH-yTK" firstAttribute="centerY" secondItem="T3w-Bh-eff" secondAttribute="centerY" id="Adl-hD-G9K"/>
                                                             <constraint firstItem="0Pl-bD-NoG" firstAttribute="centerY" secondItem="T3w-Bh-eff" secondAttribute="centerY" id="TGB-SK-oev"/>
                                                             <constraint firstItem="0Pl-bD-NoG" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6gn-DH-yTK" secondAttribute="trailing" constant="47.5" id="c3E-1n-1NJ"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9P-N4-FQZ">
+                                                        <rect key="frame" x="0.0" y="93.5" width="135" height="41.5"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="mask" translatesAutoresizingMaskIntoConstraints="NO" id="MOO-Kr-Js0">
+                                                                <rect key="frame" x="5" y="-11.5" width="40" height="64"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="8VZ-Og-nwq"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="나쁨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYS-nk-Lm3">
+                                                                <rect key="frame" x="92.5" y="10.5" width="37.5" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="xYS-nk-Lm3" firstAttribute="centerY" secondItem="m9P-N4-FQZ" secondAttribute="centerY" id="7j1-vR-Tx9"/>
+                                                            <constraint firstItem="MOO-Kr-Js0" firstAttribute="centerY" secondItem="m9P-N4-FQZ" secondAttribute="centerY" id="NOJ-uw-Ihf"/>
+                                                            <constraint firstItem="MOO-Kr-Js0" firstAttribute="leading" secondItem="m9P-N4-FQZ" secondAttribute="leading" constant="5" id="Ysv-IX-2iV"/>
+                                                            <constraint firstItem="xYS-nk-Lm3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="MOO-Kr-Js0" secondAttribute="trailing" constant="47.5" id="dlB-TO-Jrj"/>
+                                                            <constraint firstAttribute="trailing" secondItem="xYS-nk-Lm3" secondAttribute="trailing" constant="5" id="iew-83-kJH"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -302,11 +327,15 @@
     </scenes>
     <resources>
         <image name="map" catalog="system" width="128" height="112"/>
+        <image name="mask" width="64" height="64"/>
         <image name="pretty-cloudy" width="128" height="128"/>
         <image name="raining" width="64" height="64"/>
         <image name="temperature_icon" width="64" height="64"/>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
