@@ -18,7 +18,7 @@ enum NewsCategory {
 }
 
 protocol NewsListDelegate: AnyObject {
-	func tapCategory(value: NewsCategory)
+	func tapCategory(value: NewsCategory, completionHandler: @escaping (([Article]) -> Void))
 }
 
 class NewsListVC: UIViewController {
@@ -35,6 +35,7 @@ class NewsListVC: UIViewController {
 	var newsList: [Article]?
 	var newsCategory: NewsCategory = .general
 	var apiCallMade = false
+	
 
 	//MARK: - Lifecycle
 	override func viewDidLoad() {
@@ -93,14 +94,17 @@ class NewsListVC: UIViewController {
 			break
 		}
 
-		self.delegate?.tapCategory(value: self.newsCategory)
+		self.delegate?.tapCategory(value: self.newsCategory, completionHandler: { list in
+			self.newsList = list
+			self.newsTableView.reloadData()
+		})
 	}
 }
 
 
 //MARK: - UITableViewDelegate
 extension NewsListVC: UITableViewDelegate {
-
+	
 }
 
 //MARK: - UITableViewDataSource
@@ -146,3 +150,4 @@ extension NewsListVC: UIScrollViewDelegate {
 		}
 	}
 }
+

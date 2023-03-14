@@ -46,7 +46,10 @@ class WeatherAndNewsVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.fetchNews()
+		self.navigationController?.isNavigationBarHidden = true
+		self.fetchNews { _ in
+			print(",,,,")
+		}
 		if UserDefaults.standard.string(forKey: "selectedCity") == nil {
 			self.configureView()
 			self.fetchWeather()
@@ -74,7 +77,7 @@ class WeatherAndNewsVC: UIViewController {
 		guard let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsListVC") as? NewsListVC else { return }
 		newsVC.delegate = self
 		newsVC.newsList = self.newsList
-		
+
 		// false면 모달 사라지게 가능 | true면 항상 떠있게 하기
 		newsVC.isModalInPresentation = true
 
@@ -203,7 +206,7 @@ class WeatherAndNewsVC: UIViewController {
 		}
 	}
 	/// 뉴스 api 호출
-	private func fetchNews() {
+	private func fetchNews(completion: @escaping (([Article]) -> Void)) {
 		let NEWS_API_KEY = Bundle.main.infoDictionary?["NEWS_API_KEY"] ?? ""
 		let url = "https://newsapi.org/v2/top-headlines?country=kr&apiKey=\(NEWS_API_KEY)&pageSize=10&page=1&category=\(self.newCategory)"
 
@@ -223,6 +226,7 @@ class WeatherAndNewsVC: UIViewController {
 						newsVC.delegate = self
 						newsVC.newsList = self.newsList
 						print("✅")
+						completion(newsData.articles)
 					}
 				} catch {
 					print(error)
@@ -241,8 +245,10 @@ class WeatherAndNewsVC: UIViewController {
 
 
 extension WeatherAndNewsVC: NewsListDelegate {
-	func tapCategory(value: NewsCategory) {
+	func tapCategory(value: NewsCategory, completionHandler: @escaping (([Article]) -> Void)) {
 		self.newCategory = value
-		self.fetchNews()
+		self.fetchNews(completion: { newsList in
+			completionHandler(newsList)
+		})
 	}
 }
