@@ -9,4 +9,5 @@ target 'WeatherAndNews' do
   	pod 'PanModal'
 	pod 'Alamofire'
 	pod 'ActionSheetPicker-3.0'
+	pod 'UIScrollView-InfiniteScroll', '~> 1.3.0'
 end

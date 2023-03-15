@@ -2,23 +2,27 @@ PODS:
   - ActionSheetPicker-3.0 (2.7.1)
   - Alamofire (5.6.4)
   - PanModal (1.2.7)
+  - UIScrollView-InfiniteScroll (1.3.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire
   - PanModal
+  - UIScrollView-InfiniteScroll (~> 1.3.0)
 
 SPEC REPOS:
   trunk:
     - ActionSheetPicker-3.0
     - Alamofire
     - PanModal
+    - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
+  UIScrollView-InfiniteScroll: a30af3dec185edd26d6ad50c521aa277f3ebf177
 
-PODFILE CHECKSUM: a04845b8048b397941497aa67653c20ac415bebb
+PODFILE CHECKSUM: 6f646477aeb507b2aa666b943dada617db233e9b
 
 COCOAPODS: 1.11.3
