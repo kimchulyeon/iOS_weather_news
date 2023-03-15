@@ -7,6 +7,7 @@
 // https://github.com/Juanpe/SkeletonView
 
 import UIKit
+import UIScrollView_InfiniteScroll
 
 enum NewsCategory {
 	case general
@@ -40,10 +41,9 @@ class NewsListVC: UIViewController {
 	//MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		self.newsTableView.delegate = self
 		self.newsTableView.dataSource = self
-		self.cateScrollView.delegate = self
 
 		// 새로 뉴스를 호출하게되면 리스트가 마지막에 닿은거 apiCallMade 변수 false로 초기화
 		NotificationCenter.default.addObserver(self, selector: #selector(noticeReloadNewsApi), name: NSNotification.Name("reCallNewsApi"), object: nil)
@@ -52,7 +52,16 @@ class NewsListVC: UIViewController {
 		 ✅ view는 UINib(nibName:)
 		 */
 		let nib = UINib(nibName: "NewsTVC", bundle: nil)
-		newsTableView.register(nib, forCellReuseIdentifier: "NewsTVC")
+		self.newsTableView.register(nib, forCellReuseIdentifier: "NewsTVC")
+		self.newsTableView.infiniteScrollDirection = .vertical
+		self.newsTableView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+		self.newsTableView.infiniteScrollIndicatorMargin = 40
+		self.newsTableView.infiniteScrollTriggerOffset = 500
+		self.newsTableView.addInfiniteScroll { [weak self] tableView in
+			DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+				tableView.finishInfiniteScroll()
+			})
+		}
 
 		self.configureCornerRadius()
 	}
@@ -146,30 +155,6 @@ extension NewsListVC: UITableViewDataSource {
 			cell.linkUrl = news[indexPath.row].url
 		}
 		return cell
-	}
-}
-
-//MARK: - UIScrollViewDelegate ==================
-// ❌ TODO ❌
-extension NewsListVC: UIScrollViewDelegate {
-	func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		if scrollView != cateScrollView {
-			let height = scrollView.frame.size.height
-			let contentYOffset = scrollView.contentOffset.y
-			let distanceFromBottom = scrollView.contentSize.height - contentYOffset
-
-			if distanceFromBottom < height && !apiCallMade {
-				print("You reached end of the table")
-				self.apiCallMade = true
-
-				// Make API call here
-				// ...
-//				self.delegate?.tapCategory(value: self.newsCategory, completionHandler: { list in
-//					self.newsList = list
-//					self.newsTableView.reloadData()
-//				})
-			}
-		}
 	}
 }
 
