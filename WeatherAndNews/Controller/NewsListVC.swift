@@ -40,10 +40,13 @@ class NewsListVC: UIViewController {
 	//MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		self.newsTableView.delegate = self
 		self.newsTableView.dataSource = self
 		self.cateScrollView.delegate = self
 
+		// 새로 뉴스를 호출하게되면 리스트가 마지막에 닿은거 apiCallMade 변수 false로 초기화
+		NotificationCenter.default.addObserver(self, selector: #selector(noticeReloadNewsApi), name: NSNotification.Name("reCallNewsApi"), object: nil)
 		/*
 		 ✅ viewcontroller는 UIStoryboard.instantiateViewController(identifier:)
 		 ✅ view는 UINib(nibName:)
@@ -55,6 +58,9 @@ class NewsListVC: UIViewController {
 	}
 
 	//MARK: - func ============================================
+	@objc func noticeReloadNewsApi() {
+		self.apiCallMade = false
+	}
 	/// view의 왼쪽 상단, 오른쪽 상단 cornerRadius 설정
 	private func configureCornerRadius() {
 		let maskPath = UIBezierPath(roundedRect: self.view.bounds,
@@ -98,11 +104,6 @@ class NewsListVC: UIViewController {
 			self.newsList = list
 			self.newsTableView.reloadData()
 		})
-	}
-
-	/// 리스트에 링크 버튼 클릭
-	@objc func tapLinkButton(_ sender: UIButton) {
-		print("touch")
 	}
 }
 
@@ -163,6 +164,10 @@ extension NewsListVC: UIScrollViewDelegate {
 
 				// Make API call here
 				// ...
+//				self.delegate?.tapCategory(value: self.newsCategory, completionHandler: { list in
+//					self.newsList = list
+//					self.newsTableView.reloadData()
+//				})
 			}
 		}
 	}

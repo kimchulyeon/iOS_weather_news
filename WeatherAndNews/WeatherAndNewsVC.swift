@@ -40,6 +40,7 @@ class WeatherAndNewsVC: UIViewController {
 
 	var newsList: [Article]?
 	var newCategory: NewsCategory = .general
+	var newsApiPage = 1
 
 
 	//MARK: - 라이프사이클
@@ -208,7 +209,7 @@ class WeatherAndNewsVC: UIViewController {
 	/// 뉴스 api 호출
 	private func fetchNews(completion: @escaping (([Article]) -> Void)) {
 		let NEWS_API_KEY = Bundle.main.infoDictionary?["NEWS_API_KEY"] ?? ""
-		let url = "https://newsapi.org/v2/top-headlines?country=kr&apiKey=\(NEWS_API_KEY)&pageSize=10&page=1&category=\(self.newCategory)"
+		let url = "https://newsapi.org/v2/top-headlines?country=kr&apiKey=\(NEWS_API_KEY)&pageSize=10&page=\(self.newsApiPage)&category=\(self.newCategory)"
 
 		AF.request(url).response { response in
 			switch response.result {
@@ -218,14 +219,16 @@ class WeatherAndNewsVC: UIViewController {
 					guard let data = data else { return }
 					let newsData = try decoder.decode(News.self, from: data)
 					if self.newsList == nil {
-						self.newsList = newsData.articles
+						self.newsList = (self.newsList ?? []) + newsData.articles
 						self.configureNewsView()
 					} else {
-						print("이때다")
 						guard let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsListVC") as? NewsListVC else { return }
 						newsVC.delegate = self
 						newsVC.newsList = self.newsList
-						print("✅")
+						
+						// 새로 뉴스를 호출하게되면 리스트가 마지막에 닿은거 apiCallMade 변수 false로 초기화
+						NotificationCenter.default.post(name: NSNotification.Name("reCallNewsApi"), object: nil)
+						
 						completion(newsData.articles)
 					}
 				} catch {
@@ -236,11 +239,6 @@ class WeatherAndNewsVC: UIViewController {
 			}
 		}
 	}
-
-	// https://newsapi.org/v2/top-headlines?country=kr&apiKey=283ee2e3a7104bd681733595977634a3&pageSize=10&page=2 // 인기
-	// https://newsapi.org/v2/top-headlines?country=kr&category=sports&apiKey=283ee2e3a7104bd681733595977634a3&pageSize=10&page=2 // 스포츠
-	// https://newsapi.org/v2/top-headlines?country=kr&category=entertainment&apiKey=283ee2e3a7104bd681733595977634a3&pageSize=10&page=2 // 연예
-
 }
 
 
