@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,16 +18,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-ht-TOJ">
-                        <rect key="frame" x="20" y="20" width="290" height="66"/>
+                        <rect key="frame" x="20" y="20" width="350" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="ㅁㄴㅇ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-Ey-SRh">
-                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cNi-OW-zDf">
-                                <rect key="frame" x="0.0" y="38" width="290" height="28"/>
+                                <rect key="frame" x="0.0" y="38" width="350" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iG-ho-xTb">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="14.333333333333334"/>
@@ -46,41 +45,21 @@
                             </stackView>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-BT-gOT">
-                        <rect key="frame" x="330" y="33" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="40" id="9aJ-el-IDs"/>
-                            <constraint firstAttribute="height" constant="40" id="xGq-Vf-fnE"/>
-                        </constraints>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal">
-                            <imageReference key="image" image="link.circle.fill" catalog="system" symbolScale="large"/>
-                        </state>
-                        <connections>
-                            <action selector="tapLinkButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3zM-Tq-Ggr"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="vvF-ht-TOJ" secondAttribute="bottom" constant="20" id="JHv-aT-nUw"/>
                     <constraint firstItem="vvF-ht-TOJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Rsz-ON-pNo"/>
-                    <constraint firstItem="7KP-BT-gOT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uwo-Ga-PDE"/>
-                    <constraint firstAttribute="trailing" secondItem="7KP-BT-gOT" secondAttribute="trailing" constant="20" id="p2L-jx-mPa"/>
+                    <constraint firstAttribute="trailing" secondItem="vvF-ht-TOJ" secondAttribute="trailing" constant="20" id="nOY-LV-EAQ"/>
                     <constraint firstItem="vvF-ht-TOJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="sbM-ZW-XUs"/>
-                    <constraint firstItem="7KP-BT-gOT" firstAttribute="leading" secondItem="vvF-ht-TOJ" secondAttribute="trailing" constant="20" id="z3Y-Gs-hSw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorLabel" destination="9iG-ho-xTb" id="PUa-W3-6lW"/>
                 <outlet property="dateLabel" destination="A3S-fW-5wy" id="UE1-0a-u7K"/>
-                <outlet property="linkImageButton" destination="7KP-BT-gOT" id="hlr-N1-c6X"/>
                 <outlet property="titleLabel" destination="YUG-Ey-SRh" id="tPM-E2-1iP"/>
             </connections>
             <point key="canvasLocation" x="-7.6335877862595414" y="46.478873239436624"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="link.circle.fill" catalog="system" width="128" height="123"/>
-    </resources>
 </document>

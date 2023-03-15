@@ -35,7 +35,7 @@ class NewsListVC: UIViewController {
 	var newsList: [Article]?
 	var newsCategory: NewsCategory = .general
 	var apiCallMade = false
-	
+
 
 	//MARK: - Lifecycle
 	override func viewDidLoad() {
@@ -99,12 +99,29 @@ class NewsListVC: UIViewController {
 			self.newsTableView.reloadData()
 		})
 	}
+
+	/// 리스트에 링크 버튼 클릭
+	@objc func tapLinkButton(_ sender: UIButton) {
+		print("touch")
+	}
 }
 
 
 //MARK: - UITableViewDelegate
 extension NewsListVC: UITableViewDelegate {
-	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true) // Deselect the row when tapped
+
+		// Get the selected news article's URL
+		guard let list = self.newsList else { return }
+		let url = list[indexPath.row].url
+		// Create the WebViewController
+		let webViewController = NewsWebVC(url: url)
+
+		// Present or push the WebViewController
+		//self.navigationController?.pushViewController(webViewController, animated: true)
+		self.present(webViewController, animated: true)
+	}
 }
 
 //MARK: - UITableViewDataSource
